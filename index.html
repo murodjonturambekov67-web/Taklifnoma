@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Temurbek & Nodirabegim — Nikoh Oqshomi</title>
+    <title id="pageTitle">Davronbek & Nodiraxon — Nikoh Oqshomi</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background-color: #1a0205;
+            background-color: #120103;
             color: #333;
             font-family: 'Montserrat', sans-serif;
             display: flex;
@@ -23,9 +23,7 @@
             background: #fffcf7;
             min-height: 100vh;
             position: relative;
-            box-shadow: 0 0 50px rgba(0,0,0,0.8);
-            border-left: 2px solid #d4af37;
-            border-right: 2px solid #d4af37;
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
         }
         /* Cover */
         .cover {
@@ -33,7 +31,7 @@
             top: 0; left: 0; width: 100%; height: 100%;
             max-width: 420px;
             margin: 0 auto;
-            background: linear-gradient(135deg, #5b0612, #2b0308);
+            background: linear-gradient(135deg, #4a040b, #200104);
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -49,19 +47,19 @@
         .cover.hidden { transform: translate(-50%, -100%); }
         .seal {
             width: 100px; height: 100px;
-            background: #d4af37; border-radius: 50%;
+            background: linear-gradient(135deg, #f3e5ab, #c59b27); border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
-            font-size: 15px; font-weight: bold; color: #2b0308;
-            box-shadow: 0 0 30px rgba(212,175,55,0.7);
+            font-size: 14px; font-weight: bold; color: #200104;
+            box-shadow: 0 0 25px rgba(212,175,55,0.6);
             margin: 25px 0; cursor: pointer; text-transform: uppercase;
             letter-spacing: 2px; border: 3px double #fff;
             transition: 0.3s;
         }
         .seal:hover { transform: scale(1.05); }
-        .cover h2 { font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: 3px; color: #f3e5ab; }
-        .names-cover { font-family: 'Playfair Display', serif; font-size: 28px; color: #f3e5ab; font-style: italic; margin-top: 10px; }
+        .cover h2 { font-family: 'Playfair Display', serif; font-size: 18px; letter-spacing: 3px; color: #f3e5ab; }
+        .names-cover { font-family: 'Playfair Display', serif; font-size: 26px; color: #f3e5ab; font-style: italic; margin-top: 10px; }
 
-        /* Yuqori boshqaruv tugmalari (Musiqa va Til) */
+        /* Yuqori tugmalar */
         .top-controls {
             position: fixed; top: 15px; width: 100%; max-width: 420px;
             display: flex; justify-content: space-between; padding: 0 15px; z-index: 50;
@@ -70,97 +68,100 @@
         .top-controls button { pointer-events: auto; }
         
         .music-btn, .lang-btn {
-            background: #d4af37; border: none; height: 40px;
-            border-radius: 20px; cursor: pointer;
+            background: #d4af37; border: none; height: 38px;
+            border-radius: 19px; cursor: pointer;
             display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-size: 13px; font-weight: bold; color: #2b0308;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-size: 12px; font-weight: bold; color: #200104;
             padding: 0 14px;
         }
-        .music-btn { width: 40px; border-radius: 50%; padding: 0; font-size: 18px; }
+        .music-btn { width: 38px; border-radius: 50%; padding: 0; font-size: 16px; }
 
-        /* Haqiqiy chiroyli karnay elementlari */
+        /* Karnay elementlari (SVG orqali aniq va tiniq chiqadi) */
         .horn-left, .horn-right {
             position: absolute;
-            top: 45%;
-            width: 65px;
-            opacity: 0.9;
+            top: 280px;
+            width: 55px;
+            height: 55px;
+            fill: #d4af37;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
             z-index: 10;
-            transition: all 1s ease-in-out;
+            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .horn-left { left: -80px; transform: rotate(-15deg); }
-        .horn-right { right: -80px; transform: scaleX(-1) rotate(-15deg); }
+        .horn-left { left: -60px; transform: rotate(-20deg); }
+        .horn-right { right: -60px; transform: scaleX(-1) rotate(-20deg); }
 
         .content.active .horn-left {
-            left: 10px;
-            animation: pulseHorn 2s infinite alternate;
+            left: 15px;
+            animation: hornAnim 2s infinite alternate;
         }
         .content.active .horn-right {
-            right: 10px;
-            animation: pulseHorn 2s infinite alternate;
+            right: 15px;
+            animation: hornAnim 2s infinite alternate;
         }
 
-        @keyframes pulseHorn {
-            0% { transform: scale(1) rotate(-15deg); }
-            100% { transform: scale(1.08) rotate(-10deg); }
+        @keyframes hornAnim {
+            0% { transform: scale(1) rotate(-20deg); }
+            100% { transform: scale(1.1) rotate(-15deg); }
         }
 
         /* Content */
         .content { padding: 40px 20px; text-align: center; position: relative; overflow: hidden; }
-        .ornament { color: #d4af37; font-size: 20px; margin: 20px 0; letter-spacing: 5px; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 30px; color: #5b0612; margin: 10px 0; }
-        .invitation-text { font-size: 15px; line-height: 1.8; color: #555; margin: 25px 0; }
+        .ornament { color: #d4af37; font-size: 18px; margin: 15px 0; letter-spacing: 4px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 28px; color: #4a040b; margin: 5px 0; }
+        .invitation-text { font-size: 14px; line-height: 1.8; color: #555; margin: 20px 0; background: #fff8eb; padding: 15px; border-radius: 12px; border: 1px dashed #d4af37; }
 
         /* Rasm */
         .photo-box {
-            width: 100%; height: 320px; border-radius: 20px;
+            width: 100%; height: 300px; border-radius: 20px;
             overflow: hidden; border: 3px solid #d4af37;
-            margin: 25px 0; box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            margin: 20px 0; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
         .photo-box img { width: 100%; height: 100%; object-fit: cover; }
 
         /* Timer */
-        .timer-box { display: flex; justify-content: center; gap: 10px; margin: 30px 0; }
+        .timer-box { display: flex; justify-content: center; gap: 8px; margin: 25px 0; }
         .time-circle {
-            background: #5b0612; color: #f3e5ab; width: 70px; height: 70px; border-radius: 50%;
+            background: #4a040b; color: #f3e5ab; width: 68px; height: 68px; border-radius: 50%;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            box-shadow: 0 4px 10px rgba(91,6,18,0.3);
+            box-shadow: 0 4px 10px rgba(74,4,11,0.3); border: 1px solid #d4af37;
         }
-        .time-circle span { font-size: 18px; font-weight: bold; }
-        .time-circle label { font-size: 10px; text-transform: uppercase; opacity: 0.8; }
+        .time-circle span { font-size: 17px; font-weight: bold; }
+        .time-circle label { font-size: 9px; text-transform: uppercase; opacity: 0.8; }
 
         /* Calendar */
         .calendar-card {
-            background: #fff; border: 1px solid #ebdcb2; border-radius: 15px; padding: 20px; margin: 30px 0;
+            background: #fff; border: 1px solid #ebdcb2; border-radius: 15px; padding: 18px; margin: 25px 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
-        .calendar-title { font-family: 'Playfair Display', serif; color: #5b0612; font-size: 18px; margin-bottom: 10px; font-weight: 600; }
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; font-size: 13px; margin-top: 10px; }
-        .calendar-grid div { padding: 6px 0; }
+        .calendar-title { font-family: 'Playfair Display', serif; color: #4a040b; font-size: 17px; margin-bottom: 10px; font-weight: 600; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; font-size: 13px; margin-top: 10px; }
+        .calendar-grid div { padding: 5px 0; }
         .day-name { font-weight: bold; color: #888; }
-        .highlight-day { background: #5b0612; color: #f3e5ab; border-radius: 50%; font-weight: bold; }
+        .highlight-day { background: #4a040b; color: #f3e5ab; border-radius: 50%; font-weight: bold; }
 
         /* Program */
-        .program-section { margin: 30px 0; text-align: left; background: #fff; padding: 20px; border-radius: 15px; border: 1px solid #ebdcb2; }
-        .program-title { font-family: 'Playfair Display', serif; color: #5b0612; font-size: 18px; text-align: center; margin-bottom: 20px; }
-        .program-item { display: flex; align-items: center; margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
-        .program-time { font-weight: bold; color: #d4af37; width: 70px; font-size: 15px; }
-        .program-desc { font-size: 14px; color: #555; }
+        .program-section { margin: 25px 0; text-align: left; background: #fff; padding: 18px; border-radius: 15px; border: 1px solid #ebdcb2; }
+        .program-title { font-family: 'Playfair Display', serif; color: #4a040b; font-size: 17px; text-align: center; margin-bottom: 15px; }
+        .program-item { display: flex; align-items: center; margin-bottom: 12px; border-bottom: 1px dashed #eee; padding-bottom: 8px; }
+        .program-time { font-weight: bold; color: #d4af37; width: 65px; font-size: 14px; }
+        .program-desc { font-size: 13px; color: #555; }
 
         /* Venue */
-        .venue-card { background: #fff; padding: 20px; border-radius: 15px; margin: 25px 0; border: 1px solid #ebdcb2; text-align: left; }
-        .venue-card h3 { font-family: 'Playfair Display', serif; color: #5b0612; font-size: 18px; margin-bottom: 5px; text-align: center; }
-        .venue-card p { font-size: 14px; color: #666; margin-bottom: 15px; text-align: center; }
+        .venue-card { background: #fff; padding: 18px; border-radius: 15px; margin: 25px 0; border: 1px solid #ebdcb2; text-align: left; }
+        .venue-card h3 { font-family: 'Playfair Display', serif; color: #4a040b; font-size: 17px; margin-bottom: 5px; text-align: center; }
+        .venue-card p { font-size: 13px; color: #666; margin-bottom: 12px; text-align: center; }
         .map-btn {
-            display: block; width: 100%; padding: 12px; background: #5b0612; color: #fff;
-            text-decoration: none; border-radius: 8px; font-weight: 500; margin-top: 10px; font-size: 14px; text-align: center;
+            display: block; width: 100%; padding: 12px; background: #4a040b; color: #fff;
+            text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 13px; text-align: center;
+            border: 1px solid #d4af37;
         }
 
         /* Wishes */
-        .wishes-box { background: #fff; padding: 25px 20px; border-radius: 15px; border: 1px solid #ebdcb2; margin: 30px 0; text-align: center; }
-        .wishes-box input, .wishes-box textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat'; font-size: 14px; }
-        .wishes-btn { background: #d4af37; color: #2b0308; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
+        .wishes-box { background: #fff; padding: 22px 18px; border-radius: 15px; border: 1px solid #ebdcb2; margin: 25px 0; text-align: center; }
+        .wishes-box input, .wishes-box textarea { width: 100%; padding: 11px; margin: 6px 0; border: 1px solid #ddd; border-radius: 8px; font-family: 'Montserrat'; font-size: 13px; }
+        .wishes-btn { background: #d4af37; color: #200104; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 8px; font-size: 13px; }
 
-        .footer { margin: 40px 0 20px 0; font-size: 13px; color: #888; letter-spacing: 1px; font-style: italic; }
+        .footer { margin: 30px 0 15px 0; font-size: 12px; color: #777; letter-spacing: 1px; font-style: italic; }
     </style>
 </head>
 <body>
@@ -176,19 +177,19 @@
             <div class="ornament">❖ ❖ ❖</div>
             <div class="seal" onclick="openInvitation()" id="openBtn">Ochish</div>
             <p id="cSub">hurmat va ehtirom ila,</p>
-            <div class="names-cover">Temurbek & Nodirabegim</div>
+            <div class="names-cover">Davronbek & Nodiraxon</div>
         </div>
 
         <div class="content" id="mainContent">
-            <img src="https://cdn-icons-png.flaticon.com/512/815/815779.png" class="horn-left" alt="Karnay">
-            <img src="https://cdn-icons-png.flaticon.com/512/815/815779.png" class="horn-right" alt="Karnay">
+            <svg class="horn-left" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            <svg class="horn-right" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
 
             <div class="ornament">⚜️ ⚜️ ⚜️</div>
-            <h1>Temurbek <br><span style="font-family:'Montserrat'; font-size: 18px; font-weight:300; color:#888;" id="andText">va</span><br> Nodirabegim</h1>
+            <h1>Davronbek <br><span style="font-family:'Montserrat'; font-size: 16px; font-weight:300; color:#888;" id="andText">va</span><br> Nodiraxon</h1>
             <div class="ornament">⚜️ ⚜️ ⚜️</div>
 
             <div class="photo-box">
-                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Nikoh">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Nikoh">
             </div>
 
             <div class="invitation-text" id="invText">
@@ -238,8 +239,8 @@
             </div>
 
             <div class="wishes-box">
-                <h3 style="font-family:'Playfair Display'; color:#5b0612; margin-bottom:8px;" id="wishTitle">Yulduzli Tilaklar</h3>
-                <p style="font-size:13px; color:#666; margin-bottom:15px;" id="wishSub">Yoshlarga o'z dildan chiqqan tilak va tabriklaringizni yozib qoldiring:</p>
+                <h3 style="font-family:'Playfair Display'; color:#4a040b; margin-bottom:6px; font-size:16px;" id="wishTitle">Samimiy Tilaklar</h3>
+                <p style="font-size:12px; color:#666; margin-bottom:12px;" id="wishSub">Yoshlarga o'z dildan chiqqan tabriklaringizni yozib qoldiring:</p>
                 <input type="text" id="wName" placeholder="Ism va Familiyangiz">
                 <textarea rows="3" id="wText" placeholder="Samimiy tilagingiz..."></textarea>
                 <button class="wishes-btn" onclick="sendWish()" id="wishBtn">Tilakni yuborish</button>
@@ -286,7 +287,6 @@
             if (currentLang === 'uz') {
                 currentLang = 'ru';
                 document.getElementById('langToggle').innerText = 'UZ';
-                // Ruscha tarjimalar
                 document.getElementById('cTitle').innerText = "ПРИГЛАШЕНИЕ НА СВАДЬБУ";
                 document.getElementById('openBtn').innerText = "Открыть";
                 document.getElementById('cSub').innerText = "с уважением и почтением,";
@@ -313,7 +313,6 @@
             } else {
                 currentLang = 'uz';
                 document.getElementById('langToggle').innerText = 'RU';
-                // O'zbekcha tarjimalar
                 document.getElementById('cTitle').innerText = "TO'YGA TAKLIFNOMA";
                 document.getElementById('openBtn').innerText = "Ochish";
                 document.getElementById('cSub').innerText = "hurmat va ehtirom ila,";
@@ -331,8 +330,8 @@
                 document.getElementById('venueTitle').innerText = "TO'YXONA MANZILI";
                 document.getElementById('venueDesc').innerText = "📍 \"Yakka Saroy\" tantanalar saroyi, Qarshi shahri";
                 document.getElementById('mapBtn').innerText = "Yandex Xaritasi orqali ochish";
-                document.getElementById('wishTitle').innerText = "Yulduzli Tilaklar";
-                document.getElementById('wishSub').innerText = "Yoshlarga o'z dildan chiqqan tilak va tabriklaringizni yozib qoldiring:";
+                document.getElementById('wishTitle').innerText = "Samimiy Tilaklar";
+                document.getElementById('wishSub').innerText = "Yoshlarga o'z dildan chiqqan tabriklaringizni yozib qoldiring:";
                 document.getElementById('wName').placeholder = "Ism va Familiyangiz";
                 document.getElementById('wText').placeholder = "Samimiy tilagingiz...";
                 document.getElementById('wishBtn').innerText = "Tilakni yuborish";
