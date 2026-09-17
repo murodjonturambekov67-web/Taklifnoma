@@ -76,44 +76,49 @@
         }
         .music-btn { width: 38px; border-radius: 50%; padding: 0; font-size: 16px; }
 
-        /* Karnaylar - ikkala chetdan chiqib kelishi uchun aniq moslama */
-        .horn-left, .horn-right {
+        /* Uchar kaptarlar animatsiyasi */
+        .doves-container {
+            position: relative;
+            height: 50px;
+            width: 100%;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .dove {
             position: absolute;
-            top: 290px;
-            width: 60px;
-            height: 60px;
-            z-index: 20;
-            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
+            font-size: 24px;
+            animation: flyDove 6s linear infinite;
         }
-        .horn-left { left: -80px; transform: rotate(-15deg); }
-        .horn-right { right: -80px; transform: scaleX(-1) rotate(-15deg); }
+        .dove:nth-child(1) { top: 10px; left: -30px; animation-delay: 0s; }
+        .dove:nth-child(2) { top: 25px; left: -50px; animation-delay: 3s; font-size: 20px; }
 
-        .content.active .horn-left {
-            left: 12px;
-            animation: hornBounce 1.8s infinite alternate;
-        }
-        .content.active .horn-right {
-            right: 12px;
-            animation: hornBounce 1.8s infinite alternate;
+        @keyframes flyDove {
+            0% { transform: translateX(-40px) translateY(0) scale(0.8); opacity: 0; }
+            20% { opacity: 1; }
+            50% { transform: translateX(210px) translateY(-10px) scale(1); }
+            80% { opacity: 1; }
+            100% { transform: translateX(450px) translateY(5px) scale(0.9); opacity: 0; }
         }
 
-        @keyframes hornBounce {
-            0% { transform: scale(1) rotate(-15deg); }
-            100% { transform: scale(1.12) rotate(-8deg); }
+        /* Milliy Atlas naqsh chizig'i */
+        .atlas-divider {
+            width: 120px;
+            height: 6px;
+            background: linear-gradient(90deg, #b30000, #d4af37, #004d99, #008000, #b30000);
+            margin: 12px auto;
+            border-radius: 3px;
         }
 
         /* Content */
         .content { padding: 40px 20px; text-align: center; position: relative; overflow: hidden; }
-        .ornament { color: #d4af37; font-size: 18px; margin: 15px 0; letter-spacing: 4px; }
         h1 { font-family: 'Playfair Display', serif; font-size: 28px; color: #4a040b; margin: 5px 0; }
         .invitation-text { font-size: 14px; line-height: 1.8; color: #555; margin: 20px 0; background: #fff8eb; padding: 15px; border-radius: 12px; border: 1px dashed #d4af37; }
 
         /* Rasm */
         .photo-box {
             width: 100%; height: 300px; border-radius: 20px;
-            overflow: hidden; border: 3px solid #d4af37;
-            margin: 20px 0; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            overflow: hidden; border: 2px solid #e0c99b;
+            margin: 20px 0; box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
         .photo-box img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -166,27 +171,34 @@
 <body>
 
     <div class="phone-frame">
+        <!-- Yuqori boshqaruv paneli -->
         <div class="top-controls">
             <button class="music-btn" id="musicToggle" onclick="toggleMusic()" style="display:none;">🎵</button>
             <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">RU / UZ</button>
         </div>
 
+        <!-- Cover -->
         <div class="cover" id="coverScreen">
             <h2 id="cTitle">TO'YGA TAKLIFNOMA</h2>
-            <div class="ornament">❖ ❖ ❖</div>
+            <div class="atlas-divider"></div>
             <div class="seal" onclick="openInvitation()" id="openBtn">Ochish</div>
             <p id="cSub">hurmat va ehtirom ila,</p>
             <div class="names-cover">Davronbek & Nodiraxon</div>
         </div>
 
+        <!-- Content -->
         <div class="content" id="mainContent">
-            <img src="https://cdn-icons-png.flaticon.com/512/3209/3209995.png" class="horn-left" alt="Karnay">
-            <img src="https://cdn-icons-png.flaticon.com/512/3209/3209995.png" class="horn-right" alt="Karnay">
+            <!-- Uchib yuruvchi kaptarlar animatsiyasi -->
+            <div class="doves-container">
+                <div class="dove">🕊️</div>
+                <div class="dove">🕊️</div>
+            </div>
 
-            <div class="ornament">⚜️ ⚜️ ⚜️</div>
+            <div class="atlas-divider"></div>
             <h1>Davronbek <br><span style="font-family:'Montserrat'; font-size: 16px; font-weight:300; color:#888;" id="andText">va</span><br> Nodiraxon</h1>
-            <div class="ornament">⚜️ ⚜️ ⚜️</div>
+            <div class="atlas-divider"></div>
 
+            <!-- Romantik kelin-kuyov rasmi -->
             <div class="photo-box">
                 <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Nikoh">
             </div>
@@ -196,6 +208,7 @@
                 Hayotimizdagi eng baxtli va unutilmas lahzalarni yaqinlarimiz qurshovida nishonlashni istaymiz. Sizni nikoh to'yimizning qadrli mehmoni bo'lishga taklif etamiz!
             </div>
 
+            <!-- Timer -->
             <div class="timer-box">
                 <div class="time-circle"><span id="days">00</span><label id="lDays">Kun</label></div>
                 <div class="time-circle"><span id="hours">00</span><label id="lHours">Soat</label></div>
@@ -203,6 +216,7 @@
                 <div class="time-circle"><span id="seconds">00</span><label id="lSec">Soniya</label></div>
             </div>
 
+            <!-- Calendar -->
             <div class="calendar-card">
                 <div class="calendar-title" id="calTitle">2026 - Sentyabr</div>
                 <div class="calendar-grid">
@@ -215,6 +229,7 @@
                 </div>
             </div>
 
+            <!-- Program -->
             <div class="program-section">
                 <div class="program-title" id="progTitle">TO'Y TANTANASI DASTURI</div>
                 <div class="program-item">
@@ -231,12 +246,14 @@
                 </div>
             </div>
 
+            <!-- Venue -->
             <div class="venue-card">
                 <h3 id="venueTitle">TO'YXONA MANZILI</h3>
                 <p id="venueDesc">📍 "Osiyo Grand" tantanalar saroyi, Qarshi shahri</p>
                 <a href="https://yandex.uz/maps" target="_blank" class="map-btn" id="mapBtn">Yandex Xaritasi orqali ochish</a>
             </div>
 
+            <!-- Wishes -->
             <div class="wishes-box">
                 <h3 style="font-family:'Playfair Display'; color:#4a040b; margin-bottom:6px; font-size:16px;" id="wishTitle">Samimiy Tilaklar</h3>
                 <p style="font-size:12px; color:#666; margin-bottom:12px;" id="wishSub">Yoshlarga o'z dildan chiqqan tabriklaringizni yozib qoldiring:</p>
@@ -297,7 +314,7 @@
                 document.getElementById('lSec').innerText = "Секунд";
                 document.getElementById('calTitle').innerText = "2026 - Сентябрь";
                 document.getElementById('progTitle').innerText = "ПРОГРАММА СВАДЬБЫ";
-                document.getElementById('p1').innerText = "Встреча гостей под звуки карная и сурная";
+                document.getElementById('p1').innerText = "Встреча гостей под звуки праздничного вечера";
                 document.getElementById('p2').innerText = "Начало торжественного свадебного вечера";
                 document.getElementById('p3').innerText = "Праздничный банкет и шоу-программа";
                 document.getElementById('venueTitle').innerText = "АДРЕС РЕСТОРАНА";
@@ -323,7 +340,7 @@
                 document.getElementById('lSec').innerText = "Soniya";
                 document.getElementById('calTitle').innerText = "2026 - Sentyabr";
                 document.getElementById('progTitle').innerText = "TO'Y TANTANASI DASTURI";
-                document.getElementById('p1').innerText = "Mehmonlarni karnay-surnay sadolari ostida kutib olish";
+                document.getElementById('p1').innerText = "Mehmonlarni bayramona kayfiyatda kutib olish";
                 document.getElementById('p2').innerText = "Tantanali nikoh oqshomi boshlanishi";
                 document.getElementById('p3').innerText = "Bayramona dasturxon va shou-dastur";
                 document.getElementById('venueTitle').innerText = "TO'YXONA MANZILI";
