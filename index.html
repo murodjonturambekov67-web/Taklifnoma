@@ -76,32 +76,31 @@
         }
         .music-btn { width: 38px; border-radius: 50%; padding: 0; font-size: 16px; }
 
-        /* Karnay elementlari (SVG orqali aniq va tiniq chiqadi) */
+        /* Karnaylar - ikkala chetdan chiqib kelishi uchun aniq moslama */
         .horn-left, .horn-right {
             position: absolute;
-            top: 280px;
-            width: 55px;
-            height: 55px;
-            fill: #d4af37;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-            z-index: 10;
+            top: 290px;
+            width: 60px;
+            height: 60px;
+            z-index: 20;
             transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
         }
-        .horn-left { left: -60px; transform: rotate(-20deg); }
-        .horn-right { right: -60px; transform: scaleX(-1) rotate(-20deg); }
+        .horn-left { left: -80px; transform: rotate(-15deg); }
+        .horn-right { right: -80px; transform: scaleX(-1) rotate(-15deg); }
 
         .content.active .horn-left {
-            left: 15px;
-            animation: hornAnim 2s infinite alternate;
+            left: 12px;
+            animation: hornBounce 1.8s infinite alternate;
         }
         .content.active .horn-right {
-            right: 15px;
-            animation: hornAnim 2s infinite alternate;
+            right: 12px;
+            animation: hornBounce 1.8s infinite alternate;
         }
 
-        @keyframes hornAnim {
-            0% { transform: scale(1) rotate(-20deg); }
-            100% { transform: scale(1.1) rotate(-15deg); }
+        @keyframes hornBounce {
+            0% { transform: scale(1) rotate(-15deg); }
+            100% { transform: scale(1.12) rotate(-8deg); }
         }
 
         /* Content */
@@ -181,8 +180,8 @@
         </div>
 
         <div class="content" id="mainContent">
-            <svg class="horn-left" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-            <svg class="horn-right" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            <img src="https://cdn-icons-png.flaticon.com/512/3209/3209995.png" class="horn-left" alt="Karnay">
+            <img src="https://cdn-icons-png.flaticon.com/512/3209/3209995.png" class="horn-right" alt="Karnay">
 
             <div class="ornament">⚜️ ⚜️ ⚜️</div>
             <h1>Davronbek <br><span style="font-family:'Montserrat'; font-size: 16px; font-weight:300; color:#888;" id="andText">va</span><br> Nodiraxon</h1>
@@ -234,7 +233,7 @@
 
             <div class="venue-card">
                 <h3 id="venueTitle">TO'YXONA MANZILI</h3>
-                <p id="venueDesc">📍 "Yakka Saroy" tantanalar saroyi, Qarshi shahri</p>
+                <p id="venueDesc">📍 "Osiyo Grand" tantanalar saroyi, Qarshi shahri</p>
                 <a href="https://yandex.uz/maps" target="_blank" class="map-btn" id="mapBtn">Yandex Xaritasi orqali ochish</a>
             </div>
 
@@ -302,7 +301,7 @@
                 document.getElementById('p2').innerText = "Начало торжественного свадебного вечера";
                 document.getElementById('p3').innerText = "Праздничный банкет и шоу-программа";
                 document.getElementById('venueTitle').innerText = "АДРЕС РЕСТОРАНА";
-                document.getElementById('venueDesc').innerText = "📍 Дворец торжеств \"Yakka Saroy\", город Карши";
+                document.getElementById('venueDesc').innerText = "📍 Дворец торжеств \"Osiyo Grand\", город Карши";
                 document.getElementById('mapBtn').innerText = "Открыть в Яндексе";
                 document.getElementById('wishTitle').innerText = "Пожелания";
                 document.getElementById('wishSub').innerText = "Оставьте свои искренние поздравления молодоженам:";
@@ -328,7 +327,7 @@
                 document.getElementById('p2').innerText = "Tantanali nikoh oqshomi boshlanishi";
                 document.getElementById('p3').innerText = "Bayramona dasturxon va shou-dastur";
                 document.getElementById('venueTitle').innerText = "TO'YXONA MANZILI";
-                document.getElementById('venueDesc').innerText = "📍 \"Yakka Saroy\" tantanalar saroyi, Qarshi shahri";
+                document.getElementById('venueDesc').innerText = "📍 \"Osiyo Grand\" tantanalar saroyi, Qarshi shahri";
                 document.getElementById('mapBtn').innerText = "Yandex Xaritasi orqali ochish";
                 document.getElementById('wishTitle').innerText = "Samimiy Tilaklar";
                 document.getElementById('wishSub').innerText = "Yoshlarga o'z dildan chiqqan tabriklaringizni yozib qoldiring:";
