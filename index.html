@@ -61,8 +61,34 @@
         .cover h2 { font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: 3px; color: #f3e5ab; }
         .names-cover { font-family: 'Playfair Display', serif; font-size: 28px; color: #f3e5ab; font-style: italic; margin-top: 10px; }
 
+        /* Karnaylar animatsiyasi uchun stillar */
+        .horn-left, .horn-right {
+            position: absolute;
+            top: 40%;
+            width: 80px;
+            opacity: 0.85;
+            transition: transform 1s ease-in-out, opacity 1s;
+            z-index: 10;
+        }
+        .horn-left { left: -100px; }
+        .horn-right { right: -100px; transform: scaleX(-1); }
+
+        .content.active .horn-left {
+            left: 10px;
+            animation: bounceHorn 2s infinite alternate;
+        }
+        .content.active .horn-right {
+            right: 10px;
+            animation: bounceHorn 2s infinite alternate;
+        }
+
+        @keyframes bounceHorn {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-8px); }
+        }
+
         /* Content */
-        .content { padding: 40px 20px; text-align: center; }
+        .content { padding: 40px 20px; text-align: center; position: relative; overflow: hidden; }
         .music-btn {
             position: fixed; top: 15px; left: 15px;
             background: #d4af37; border: none; width: 42px; height: 42px;
@@ -71,13 +97,13 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-size: 18px;
         }
         .ornament { color: #d4af37; font-size: 20px; margin: 20px 0; letter-spacing: 5px; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 34px; color: #5b0612; margin: 10px 0; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 32px; color: #5b0612; margin: 10px 0; }
         .invitation-text { font-size: 15px; line-height: 1.8; color: #555; margin: 25px 0; }
 
-        /* Couple Photo Section */
+        /* Kabutarlar va Kelin-Kuyov rasmi (Sifatli dizayn) */
         .photo-box {
             width: 100%;
-            height: 320px;
+            height: 300px;
             border-radius: 20px;
             overflow: hidden;
             border: 3px solid #d4af37;
@@ -123,7 +149,7 @@
 
         /* Program / Timeline */
         .program-section {
-            margin: 40px 0; text-align: left; background: #fff; padding: 20px; border-radius: 15px; border: 1px solid #ebdcb2;
+            margin: 30px 0; text-align: left; background: #fff; padding: 20px; border-radius: 15px; border: 1px solid #ebdcb2;
         }
         .program-title { font-family: 'Playfair Display', serif; color: #5b0612; font-size: 18px; text-align: center; margin-bottom: 20px; }
         .program-item {
@@ -146,14 +172,14 @@
         }
         .map-btn:hover { background: #3d030c; }
 
-        /* RSVP Form */
-        .rsvp-box {
+        /* Tilaklar va Tabriklar (Kreativ Yangi Blok) */
+        .wishes-box {
             background: #fff; padding: 25px 20px; border-radius: 15px; border: 1px solid #ebdcb2; margin: 30px 0; text-align: center;
         }
-        .rsvp-box input {
-            width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat';
+        .wishes-box input, .wishes-box textarea {
+            width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat'; font-size: 14px;
         }
-        .rsvp-btn {
+        .wishes-btn {
             background: #d4af37; color: #2b0308; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px;
         }
 
@@ -173,18 +199,21 @@
             <div class="names-cover">Temurbek & Nodirabegim</div>
         </div>
 
-        <div class="content">
+        <div class="content" id="mainContent">
+            <img src="https://cdn-icons-png.flaticon.com/512/3209/3209995.png" class="horn-left" alt="Karnay">
+            <img src="https://cdn-icons-png.flaticon.com/512/3209/3209995.png" class="horn-right" alt="Karnay">
+
             <div class="ornament">⚜️ ⚜️ ⚜️</div>
-            <h1>Temurbek <br><span style="font-family:'Montserrat'; font-size: 20px; font-weight:300; color:#888;">va</span><br> Nodirabegim</h1>
+            <h1>Temurbek <br><span style="font-family:'Montserrat'; font-size: 18px; font-weight:300; color:#888;">va</span><br> Nodirabegim</h1>
             <div class="ornament">⚜️ ⚜️ ⚜️</div>
 
             <div class="photo-box">
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Kelin va Kuyov">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Nikoh oqshomi">
             </div>
 
             <div class="invitation-text">
                 <b>Aziz va qadrdon insonimiz!</b><br><br>
-                Hayotimizdagi eng unutilmas va quvonchli kun — nikoh to'yimiz tantanasiga bag'ishlangan oqshomimizda qadrli mehmonimiz bo'lishingizni chin daldan tilaymiz.
+                Hayotimizdagi eng baxtli va unutilmas lahzalarni yaqinlarimiz qurshovida nishonlashni istaymiz. Sizni nikoh to'yimizning qadrli mehmoni bo'lishga taklif etamiz!
             </div>
 
             <div class="timer-box">
@@ -207,10 +236,10 @@
             </div>
 
             <div class="program-section">
-                <div class="program-title">TO'Y DASTURI</div>
+                <div class="program-title">TO'Y TANTANASI DASTURI</div>
                 <div class="program-item">
                     <div class="program-time">17:00</div>
-                    <div class="program-desc">Mehmonlarni kutib olish va bayramonaona yig'in</div>
+                    <div class="program-desc">Mehmonlarni karnay-surnay sadolari ostida kutib olish</div>
                 </div>
                 <div class="program-item">
                     <div class="program-time">18:00</div>
@@ -218,7 +247,7 @@
                 </div>
                 <div class="program-item">
                     <div class="program-time">20:00</div>
-                    <div class="program-desc">Katta bayram dasturxoni va shou-dastur</div>
+                    <div class="program-desc">Bayramona dasturxon va shou-dastur</div>
                 </div>
             </div>
 
@@ -228,15 +257,16 @@
                 <a href="https://yandex.uz/maps" target="_blank" class="map-btn">Yandex Xaritasi orqali ochish</a>
             </div>
 
-            <div class="rsvp-box">
-                <h3 style="font-family:'Playfair Display'; color:#5b0612; margin-bottom:10px;">Kelishingizni xabar bering</h3>
-                <p style="font-size:13px; color:#666; margin-bottom:15px;">Ismingizni yozib, qatnashishingizni tasdiqlang:</p>
+            <div class="wishes-box">
+                <h3 style="font-family:'Playfair Display'; color:#5b0612; margin-bottom:8px;">Yulduzli Tilaklar</h3>
+                <p style="font-size:13px; color:#666; margin-bottom:15px;">Yoshlarga o'z dildan chiqqan tilak va tabriklaringizni yozib qoldiring:</p>
                 <input type="text" placeholder="Ism va Familiyangiz">
-                <button class="rsvp-btn" onclick="alert('Rahmat! Javobingiz qabul qilindi.')">Tasdiqlash</button>
+                <textarea rows="3" placeholder="Samimiy tilagingiz..."></textarea>
+                <button class="wishes-btn" onclick="alert('Tabrigingiz qabul qilindi! Yoshlar nomidan minnatdorchilik bildiramiz.')">Tilakni yuborish</button>
             </div>
 
             <div class="footer">
-                Sizni kutib qolamiz!
+                Sizni to'yimizda ko'rtsak doim xursand bo'lamiz!
             </div>
         </div>
     </div>
@@ -248,10 +278,12 @@
     <script>
         const music = document.getElementById('bgMusic');
         const cover = document.getElementById('coverScreen');
+        const mainContent = document.getElementById('mainContent');
         let isPlaying = false;
 
         function openInvitation() {
             cover.classList.add('hidden');
+            mainContent.classList.add('active'); // Karnaylarni animatsiya bilan chiqaradi
             music.play();
             isPlaying = true;
             document.getElementById('musicToggle').style.display = 'flex';
