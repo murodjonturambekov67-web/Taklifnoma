@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Murod & Kelin — To'yga Taklifnoma</title>
+    <title>Temurbek & Nodirabegim — To'yga Taklifnoma</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
@@ -12,104 +12,239 @@
             box-sizing: border-box;
         }
         body {
-            background-color: #0f1016;
-            color: #f5f5f5;
+            background-color: #5b0612;
+            color: #333;
             font-family: 'Montserrat', sans-serif;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             overflow-x: hidden;
         }
-        .container {
-            max-width: 480px;
-            margin: 0 auto;
+        .phone-frame {
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
             min-height: 100vh;
-            background: linear-gradient(180deg, #161821 0%, #0f1016 100%);
-            padding: 40px 20px;
-            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+            position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+        /* Muqova (Cover) qismi */
+        .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #7a0918;
+            color: #fff;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            z-index: 10;
+            transition: transform 0.8s ease-in-out;
+            padding: 20px;
+            text-align: center;
         }
-        h1, h2 {
-            font-family: 'Playfair Display', serif;
+        .cover.hidden {
+            transform: translateY(-100%);
         }
-        .tag {
+        .seal {
+            width: 90px;
+            height: 90px;
+            background: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-size: 14px;
-            letter-spacing: 3px;
+            font-weight: bold;
+            color: #5b0612;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+            cursor: pointer;
             text-transform: uppercase;
-            color: #d4af37;
+            letter-spacing: 1px;
+        }
+        .cover h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            letter-spacing: 2px;
             margin-bottom: 15px;
+            color: #f3e5ab;
         }
-        .names {
-            font-size: 38px;
-            color: #ffffff;
-            margin: 20px 0;
-            font-weight: 600;
+        .cover p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 30px;
         }
-        .names span {
-            color: #d4af37;
+        .names-cover {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: #f3e5ab;
             font-style: italic;
         }
-        .text {
+
+        /* Asosiy kontent */
+        .content {
+            padding: 40px 20px;
+            text-align: center;
+            background: #fff;
+            min-height: 100vh;
+        }
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #d4af37;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .ornament {
+            font-size: 24px;
+            color: #7a0918;
+            margin: 15px 0;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: #7a0918;
+            margin: 15px 0;
+        }
+        .invitation-text {
             font-size: 15px;
             line-height: 1.8;
-            color: #b0b0b0;
-            margin-bottom: 30px;
-            padding: 0 10px;
+            color: #555;
+            margin: 25px 0;
         }
-        .date-box {
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 15px 0;
-            width: 100%;
-            margin-bottom: 30px;
-        }
-        .date {
+        .section-title {
+            font-family: 'Playfair Display', serif;
             font-size: 20px;
-            color: #d4af37;
-            font-weight: 500;
+            color: #7a0918;
+            margin: 30px 0 15px 0;
         }
-        .location {
-            font-size: 16px;
-            color: #dddddd;
-            margin-bottom: 35px;
+        .venue-card {
+            background: #f9f6f0;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1px solid #ebdcb2;
         }
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background: #d4af37;
-            color: #0f1016;
+        .venue-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #7a0918;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .venue-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .map-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #7a0918;
+            color: #fff;
             text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            letter-spacing: 1px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-top: 10px;
+            font-size: 14px;
             transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
-        .btn:hover {
-            background: #e6c55c;
-            transform: translateY(-2px);
+        .map-btn:hover {
+            background: #5b0612;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 13px;
+            color: #888;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="tag">To'yga Taklifnoma</div>
-        <p class="text">Aziz qadrdonlarimiz! Sizni farzandlarimiz to'yi munosabati bilan yozilgan dasturxonimizning qadrli mehmoni bo'lishga taklif etamiz.</p>
-        
-        <div class="names">Murod <span>&</span> Kelin</div>
-        
-        <div class="date-box">
-            <div class="date">25 Sentyabr, 2026 yil</div>
+    <div class="phone-frame">
+        <!-- Musiqani boshqarish tugmasi -->
+        <button class="music-btn" id="musicToggle" onclick="toggleMusic()">🎵</button>
+
+        <!-- Ochilish muqovasi (Cover) -->
+        <div class="cover" id="coverScreen">
+            <h2>SIZ TO'YIMIZGA</h2>
+            <h2>TAKlif ETILGANSIZ</h2>
+            <div class="ornament">⚜️</div>
+            <div class="seal" onclick="openInvitation()">Ochish</div>
+            <p>muhabbat ila,</p>
+            <div class="names-cover">Temurbek & Nodirabegim</div>
         </div>
 
-        <div class="location">
-            📍 <b>"Tamosha"</b> to'yxonasi, Toshkent shahri
-        </div>
+        <!-- Asosiy sayt qismi -->
+        <div class="content">
+            <div class="ornament">❖ ❖ ❖</div>
+            <h1>Temurbek <br><span style="font-style: italic; font-weight: normal; font-size: 26px;">va</span><br> Nodirabegim</h1>
+            <div class="ornament">❖ ❖ ❖</div>
 
-        <a href="https://maps.app.goo.gl" target="_blank" class="btn">Xaritada ko'rish</a>
+            <div class="invitation-text">
+                <b>Aziz va qadrdon insonimiz!</b><br><br>
+                Hayotimizdagi eng baxtli kunlardan biri — nikoh to'yimizni siz bilan birga nishonlashni niyat qildik. Sizni ushbu kechamizga samimiy taklif etamiz. Quvonchli kunimizda aziz mehmonimiz bo'lishingizni intizorlik bilan kutamiz.
+            </div>
+
+            <div class="section-title">TO'Y MANZILI</div>
+            <div class="venue-card">
+                <h3>YAKKA SAROY RESTORANI</h3>
+                <p>Qarshi shahri, Qashqadaryo viloyati</p>
+                <a href="https://yandex.uz/maps" target="_blank" class="map-btn">Yandex Xaritasi</a>
+                <a href="https://maps.app.goo.gl" target="_blank" class="map-btn" style="background: #333;">Google Maps</a>
+            </div>
+
+            <div class="footer">
+                Baxsli kunlarimizda birga bo'ling!
+            </div>
+        </div>
     </div>
+
+    <!-- Fon musiqasi uchun audio (xohlasangiz o'zgartirishingiz mumkin) -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        const cover = document.getElementById('coverScreen');
+        let isPlaying = false;
+
+        function openInvitation() {
+            cover.classList.add('hidden');
+            music.play();
+            isPlaying = true;
+            document.getElementById('musicToggle').style.display = 'flex';
+        }
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                isPlaying = false;
+                document.getElementById('musicToggle').style.opacity = '0.5';
+            } else {
+                music.play();
+                isPlaying = true;
+                document.getElementById('musicToggle').style.opacity = '1';
+            }
+        }
+    </script>
 
 </body>
 </html>
