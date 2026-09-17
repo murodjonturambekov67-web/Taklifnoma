@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temurbek & Nodirabegim — Nikoh Oqshomi</title>
+    <title id="pageTitle">Temurbek & Nodirabegim — Nikoh Oqshomi</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -61,69 +61,67 @@
         .cover h2 { font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: 3px; color: #f3e5ab; }
         .names-cover { font-family: 'Playfair Display', serif; font-size: 28px; color: #f3e5ab; font-style: italic; margin-top: 10px; }
 
-        /* Karnaylar animatsiyasi uchun stillar */
+        /* Yuqori boshqaruv tugmalari (Musiqa va Til) */
+        .top-controls {
+            position: fixed; top: 15px; width: 100%; max-width: 420px;
+            display: flex; justify-content: space-between; padding: 0 15px; z-index: 50;
+            pointer-events: none;
+        }
+        .top-controls button { pointer-events: auto; }
+        
+        .music-btn, .lang-btn {
+            background: #d4af37; border: none; height: 40px;
+            border-radius: 20px; cursor: pointer;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-size: 13px; font-weight: bold; color: #2b0308;
+            padding: 0 14px;
+        }
+        .music-btn { width: 40px; border-radius: 50%; padding: 0; font-size: 18px; }
+
+        /* Haqiqiy chiroyli karnay elementlari */
         .horn-left, .horn-right {
             position: absolute;
-            top: 40%;
-            width: 80px;
-            opacity: 0.85;
-            transition: transform 1s ease-in-out, opacity 1s;
+            top: 45%;
+            width: 65px;
+            opacity: 0.9;
             z-index: 10;
+            transition: all 1s ease-in-out;
         }
-        .horn-left { left: -100px; }
-        .horn-right { right: -100px; transform: scaleX(-1); }
+        .horn-left { left: -80px; transform: rotate(-15deg); }
+        .horn-right { right: -80px; transform: scaleX(-1) rotate(-15deg); }
 
         .content.active .horn-left {
             left: 10px;
-            animation: bounceHorn 2s infinite alternate;
+            animation: pulseHorn 2s infinite alternate;
         }
         .content.active .horn-right {
             right: 10px;
-            animation: bounceHorn 2s infinite alternate;
+            animation: pulseHorn 2s infinite alternate;
         }
 
-        @keyframes bounceHorn {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-8px); }
+        @keyframes pulseHorn {
+            0% { transform: scale(1) rotate(-15deg); }
+            100% { transform: scale(1.08) rotate(-10deg); }
         }
 
         /* Content */
         .content { padding: 40px 20px; text-align: center; position: relative; overflow: hidden; }
-        .music-btn {
-            position: fixed; top: 15px; left: 15px;
-            background: #d4af37; border: none; width: 42px; height: 42px;
-            border-radius: 50%; cursor: pointer; z-index: 50;
-            display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-size: 18px;
-        }
         .ornament { color: #d4af37; font-size: 20px; margin: 20px 0; letter-spacing: 5px; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 32px; color: #5b0612; margin: 10px 0; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 30px; color: #5b0612; margin: 10px 0; }
         .invitation-text { font-size: 15px; line-height: 1.8; color: #555; margin: 25px 0; }
 
-        /* Kabutarlar va Kelin-Kuyov rasmi (Sifatli dizayn) */
+        /* Rasm */
         .photo-box {
-            width: 100%;
-            height: 300px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 3px solid #d4af37;
-            margin: 25px 0;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            position: relative;
+            width: 100%; height: 320px; border-radius: 20px;
+            overflow: hidden; border: 3px solid #d4af37;
+            margin: 25px 0; box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
-        .photo-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .photo-box img { width: 100%; height: 100%; object-fit: cover; }
 
         /* Timer */
-        .timer-box {
-            display: flex; justify-content: center; gap: 10px; margin: 30px 0;
-        }
+        .timer-box { display: flex; justify-content: center; gap: 10px; margin: 30px 0; }
         .time-circle {
-            background: #5b0612; color: #f3e5ab;
-            width: 70px; height: 70px; border-radius: 50%;
+            background: #5b0612; color: #f3e5ab; width: 70px; height: 70px; border-radius: 50%;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             box-shadow: 0 4px 10px rgba(91,6,18,0.3);
         }
@@ -132,56 +130,35 @@
 
         /* Calendar */
         .calendar-card {
-            background: #fff; border: 1px solid #ebdcb2;
-            border-radius: 15px; padding: 20px; margin: 30px 0;
+            background: #fff; border: 1px solid #ebdcb2; border-radius: 15px; padding: 20px; margin: 30px 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
         .calendar-title { font-family: 'Playfair Display', serif; color: #5b0612; font-size: 18px; margin-bottom: 10px; font-weight: 600; }
-        .calendar-grid {
-            display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; font-size: 13px; margin-top: 10px;
-        }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; font-size: 13px; margin-top: 10px; }
         .calendar-grid div { padding: 6px 0; }
         .day-name { font-weight: bold; color: #888; }
-        .highlight-day {
-            background: #5b0612; color: #f3e5ab; border-radius: 50%; font-weight: bold;
-            box-shadow: 0 2px 8px rgba(91,6,18,0.4);
-        }
+        .highlight-day { background: #5b0612; color: #f3e5ab; border-radius: 50%; font-weight: bold; }
 
-        /* Program / Timeline */
-        .program-section {
-            margin: 30px 0; text-align: left; background: #fff; padding: 20px; border-radius: 15px; border: 1px solid #ebdcb2;
-        }
+        /* Program */
+        .program-section { margin: 30px 0; text-align: left; background: #fff; padding: 20px; border-radius: 15px; border: 1px solid #ebdcb2; }
         .program-title { font-family: 'Playfair Display', serif; color: #5b0612; font-size: 18px; text-align: center; margin-bottom: 20px; }
-        .program-item {
-            display: flex; align-items: center; margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px;
-        }
+        .program-item { display: flex; align-items: center; margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
         .program-time { font-weight: bold; color: #d4af37; width: 70px; font-size: 15px; }
         .program-desc { font-size: 14px; color: #555; }
 
         /* Venue */
-        .venue-card {
-            background: #fff; padding: 20px; border-radius: 15px;
-            margin: 25px 0; border: 1px solid #ebdcb2; text-align: left;
-        }
+        .venue-card { background: #fff; padding: 20px; border-radius: 15px; margin: 25px 0; border: 1px solid #ebdcb2; text-align: left; }
         .venue-card h3 { font-family: 'Playfair Display', serif; color: #5b0612; font-size: 18px; margin-bottom: 5px; text-align: center; }
         .venue-card p { font-size: 14px; color: #666; margin-bottom: 15px; text-align: center; }
         .map-btn {
-            display: block; width: 100%; padding: 12px; background: #5b0612;
-            color: #fff; text-decoration: none; border-radius: 8px; font-weight: 500;
-            margin-top: 10px; font-size: 14px; text-align: center; transition: 0.3s;
+            display: block; width: 100%; padding: 12px; background: #5b0612; color: #fff;
+            text-decoration: none; border-radius: 8px; font-weight: 500; margin-top: 10px; font-size: 14px; text-align: center;
         }
-        .map-btn:hover { background: #3d030c; }
 
-        /* Tilaklar va Tabriklar (Kreativ Yangi Blok) */
-        .wishes-box {
-            background: #fff; padding: 25px 20px; border-radius: 15px; border: 1px solid #ebdcb2; margin: 30px 0; text-align: center;
-        }
-        .wishes-box input, .wishes-box textarea {
-            width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat'; font-size: 14px;
-        }
-        .wishes-btn {
-            background: #d4af37; color: #2b0308; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px;
-        }
+        /* Wishes */
+        .wishes-box { background: #fff; padding: 25px 20px; border-radius: 15px; border: 1px solid #ebdcb2; margin: 30px 0; text-align: center; }
+        .wishes-box input, .wishes-box textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat'; font-size: 14px; }
+        .wishes-btn { background: #d4af37; color: #2b0308; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
 
         .footer { margin: 40px 0 20px 0; font-size: 13px; color: #888; letter-spacing: 1px; font-style: italic; }
     </style>
@@ -189,42 +166,45 @@
 <body>
 
     <div class="phone-frame">
-        <button class="music-btn" id="musicToggle" onclick="toggleMusic()" style="display:none;">🎵</button>
+        <div class="top-controls">
+            <button class="music-btn" id="musicToggle" onclick="toggleMusic()" style="display:none;">🎵</button>
+            <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">RU / UZ</button>
+        </div>
 
         <div class="cover" id="coverScreen">
-            <h2>TO'YGA TAKLIFNOMA</h2>
+            <h2 id="cTitle">TO'YGA TAKLIFNOMA</h2>
             <div class="ornament">❖ ❖ ❖</div>
-            <div class="seal" onclick="openInvitation()">Ochish</div>
-            <p>hurmat va ehtirom ila,</p>
+            <div class="seal" onclick="openInvitation()" id="openBtn">Ochish</div>
+            <p id="cSub">hurmat va ehtirom ila,</p>
             <div class="names-cover">Temurbek & Nodirabegim</div>
         </div>
 
         <div class="content" id="mainContent">
-            <img src="https://cdn-icons-png.flaticon.com/512/3209/3209995.png" class="horn-left" alt="Karnay">
-            <img src="https://cdn-icons-png.flaticon.com/512/3209/3209995.png" class="horn-right" alt="Karnay">
+            <img src="https://cdn-icons-png.flaticon.com/512/815/815779.png" class="horn-left" alt="Karnay">
+            <img src="https://cdn-icons-png.flaticon.com/512/815/815779.png" class="horn-right" alt="Karnay">
 
             <div class="ornament">⚜️ ⚜️ ⚜️</div>
-            <h1>Temurbek <br><span style="font-family:'Montserrat'; font-size: 18px; font-weight:300; color:#888;">va</span><br> Nodirabegim</h1>
+            <h1>Temurbek <br><span style="font-family:'Montserrat'; font-size: 18px; font-weight:300; color:#888;" id="andText">va</span><br> Nodirabegim</h1>
             <div class="ornament">⚜️ ⚜️ ⚜️</div>
 
             <div class="photo-box">
-                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Nikoh oqshomi">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Nikoh">
             </div>
 
-            <div class="invitation-text">
+            <div class="invitation-text" id="invText">
                 <b>Aziz va qadrdon insonimiz!</b><br><br>
                 Hayotimizdagi eng baxtli va unutilmas lahzalarni yaqinlarimiz qurshovida nishonlashni istaymiz. Sizni nikoh to'yimizning qadrli mehmoni bo'lishga taklif etamiz!
             </div>
 
             <div class="timer-box">
-                <div class="time-circle"><span id="days">00</span><label>Kun</label></div>
-                <div class="time-circle"><span id="hours">00</span><label>Soat</label></div>
-                <div class="time-circle"><span id="minutes">00</span><label>Daqiqa</label></div>
-                <div class="time-circle"><span id="seconds">00</span><label>Soniya</label></div>
+                <div class="time-circle"><span id="days">00</span><label id="lDays">Kun</label></div>
+                <div class="time-circle"><span id="hours">00</span><label id="lHours">Soat</label></div>
+                <div class="time-circle"><span id="minutes">00</span><label id="lMin">Daqiqa</label></div>
+                <div class="time-circle"><span id="seconds">00</span><label id="lSec">Soniya</label></div>
             </div>
 
             <div class="calendar-card">
-                <div class="calendar-title">2026 - Sentyabr</div>
+                <div class="calendar-title" id="calTitle">2026 - Sentyabr</div>
                 <div class="calendar-grid">
                     <div class="day-name">Du</div><div class="day-name">Se</div><div class="day-name">Ch</div><div class="day-name">Pa</div><div class="day-name">Ju</div><div class="day-name">Sh</div><div class="day-name">Ya</div>
                     <div></div><div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
@@ -236,36 +216,36 @@
             </div>
 
             <div class="program-section">
-                <div class="program-title">TO'Y TANTANASI DASTURI</div>
+                <div class="program-title" id="progTitle">TO'Y TANTANASI DASTURI</div>
                 <div class="program-item">
                     <div class="program-time">17:00</div>
-                    <div class="program-desc">Mehmonlarni karnay-surnay sadolari ostida kutib olish</div>
+                    <div class="program-desc" id="p1">Mehmonlarni karnay-surnay sadolari ostida kutib olish</div>
                 </div>
                 <div class="program-item">
                     <div class="program-time">18:00</div>
-                    <div class="program-desc">Tantanali nikoh oqshomi boshlanishi</div>
+                    <div class="program-desc" id="p2">Tantanali nikoh oqshomi boshlanishi</div>
                 </div>
                 <div class="program-item">
                     <div class="program-time">20:00</div>
-                    <div class="program-desc">Bayramona dasturxon va shou-dastur</div>
+                    <div class="program-desc" id="p3">Bayramona dasturxon va shou-dastur</div>
                 </div>
             </div>
 
             <div class="venue-card">
-                <h3>TO'YXONA MANZILI</h3>
-                <p>📍 "Yakka Saroy" tantanalar saroyi, Qarshi shahri</p>
-                <a href="https://yandex.uz/maps" target="_blank" class="map-btn">Yandex Xaritasi orqali ochish</a>
+                <h3 id="venueTitle">TO'YXONA MANZILI</h3>
+                <p id="venueDesc">📍 "Yakka Saroy" tantanalar saroyi, Qarshi shahri</p>
+                <a href="https://yandex.uz/maps" target="_blank" class="map-btn" id="mapBtn">Yandex Xaritasi orqali ochish</a>
             </div>
 
             <div class="wishes-box">
-                <h3 style="font-family:'Playfair Display'; color:#5b0612; margin-bottom:8px;">Yulduzli Tilaklar</h3>
-                <p style="font-size:13px; color:#666; margin-bottom:15px;">Yoshlarga o'z dildan chiqqan tilak va tabriklaringizni yozib qoldiring:</p>
-                <input type="text" placeholder="Ism va Familiyangiz">
-                <textarea rows="3" placeholder="Samimiy tilagingiz..."></textarea>
-                <button class="wishes-btn" onclick="alert('Tabrigingiz qabul qilindi! Yoshlar nomidan minnatdorchilik bildiramiz.')">Tilakni yuborish</button>
+                <h3 style="font-family:'Playfair Display'; color:#5b0612; margin-bottom:8px;" id="wishTitle">Yulduzli Tilaklar</h3>
+                <p style="font-size:13px; color:#666; margin-bottom:15px;" id="wishSub">Yoshlarga o'z dildan chiqqan tilak va tabriklaringizni yozib qoldiring:</p>
+                <input type="text" id="wName" placeholder="Ism va Familiyangiz">
+                <textarea rows="3" id="wText" placeholder="Samimiy tilagingiz..."></textarea>
+                <button class="wishes-btn" onclick="sendWish()" id="wishBtn">Tilakni yuborish</button>
             </div>
 
-            <div class="footer">
+            <div class="footer" id="footerText">
                 Sizni to'yimizda ko'rtsak doim xursand bo'lamiz!
             </div>
         </div>
@@ -280,10 +260,11 @@
         const cover = document.getElementById('coverScreen');
         const mainContent = document.getElementById('mainContent');
         let isPlaying = false;
+        let currentLang = 'uz';
 
         function openInvitation() {
             cover.classList.add('hidden');
-            mainContent.classList.add('active'); // Karnaylarni animatsiya bilan chiqaradi
+            mainContent.classList.add('active');
             music.play();
             isPlaying = true;
             document.getElementById('musicToggle').style.display = 'flex';
@@ -301,27 +282,90 @@
             }
         }
 
-        const weddingDate = new Date("September 25, 2026 18:00:00").getTime();
+        function toggleLanguage() {
+            if (currentLang === 'uz') {
+                currentLang = 'ru';
+                document.getElementById('langToggle').innerText = 'UZ';
+                // Ruscha tarjimalar
+                document.getElementById('cTitle').innerText = "ПРИГЛАШЕНИЕ НА СВАДЬБУ";
+                document.getElementById('openBtn').innerText = "Открыть";
+                document.getElementById('cSub').innerText = "с уважением и почтением,";
+                document.getElementById('andText').innerText = "и";
+                document.getElementById('invText').innerHTML = "<b>Дорогие и уважаемые гости!</b><br><br>Мы хотим разделить самые счастливые моменты нашей жизни в кругу близких. Приглашаем вас разделить с нами радость нашего свадебного вечера!";
+                document.getElementById('lDays').innerText = "Дней";
+                document.getElementById('lHours').innerText = "Часов";
+                document.getElementById('lMin').innerText = "Минут";
+                document.getElementById('lSec').innerText = "Секунд";
+                document.getElementById('calTitle').innerText = "2026 - Сентябрь";
+                document.getElementById('progTitle').innerText = "ПРОГРАММА СВАДЬБЫ";
+                document.getElementById('p1').innerText = "Встреча гостей под звуки карная и сурная";
+                document.getElementById('p2').innerText = "Начало торжественного свадебного вечера";
+                document.getElementById('p3').innerText = "Праздничный банкет и шоу-программа";
+                document.getElementById('venueTitle').innerText = "АДРЕС РЕСТОРАНА";
+                document.getElementById('venueDesc').innerText = "📍 Дворец торжеств \"Yakka Saroy\", город Карши";
+                document.getElementById('mapBtn').innerText = "Открыть в Яндексе";
+                document.getElementById('wishTitle').innerText = "Пожелания";
+                document.getElementById('wishSub').innerText = "Оставьте свои искренние поздравления молодоженам:";
+                document.getElementById('wName').placeholder = "Ваше Имя и Фамилия";
+                document.getElementById('wText').placeholder = "Ваше искреннее пожелание...";
+                document.getElementById('wishBtn').innerText = "Отправить пожелание";
+                document.getElementById('footerText').innerText = "Будем рады видеть вас на нашей свадьбе!";
+            } else {
+                currentLang = 'uz';
+                document.getElementById('langToggle').innerText = 'RU';
+                // O'zbekcha tarjimalar
+                document.getElementById('cTitle').innerText = "TO'YGA TAKLIFNOMA";
+                document.getElementById('openBtn').innerText = "Ochish";
+                document.getElementById('cSub').innerText = "hurmat va ehtirom ila,";
+                document.getElementById('andText').innerText = "va";
+                document.getElementById('invText').innerHTML = "<b>Aziz va qadrdon insonimiz!</b><br><br>Hayotimizdagi eng baxtli va unutilmas lahzalarni yaqinlarimiz qurshovida nishonlashni istaymiz. Sizni nikoh to'yimizning qadrli mehmoni bo'lishga taklif etamiz!";
+                document.getElementById('lDays').innerText = "Kun";
+                document.getElementById('lHours').innerText = "Soat";
+                document.getElementById('lMin').innerText = "Daqiqa";
+                document.getElementById('lSec').innerText = "Soniya";
+                document.getElementById('calTitle').innerText = "2026 - Sentyabr";
+                document.getElementById('progTitle').innerText = "TO'Y TANTANASI DASTURI";
+                document.getElementById('p1').innerText = "Mehmonlarni karnay-surnay sadolari ostida kutib olish";
+                document.getElementById('p2').innerText = "Tantanali nikoh oqshomi boshlanishi";
+                document.getElementById('p3').innerText = "Bayramona dasturxon va shou-dastur";
+                document.getElementById('venueTitle').innerText = "TO'YXONA MANZILI";
+                document.getElementById('venueDesc').innerText = "📍 \"Yakka Saroy\" tantanalar saroyi, Qarshi shahri";
+                document.getElementById('mapBtn').innerText = "Yandex Xaritasi orqali ochish";
+                document.getElementById('wishTitle').innerText = "Yulduzli Tilaklar";
+                document.getElementById('wishSub').innerText = "Yoshlarga o'z dildan chiqqan tilak va tabriklaringizni yozib qoldiring:";
+                document.getElementById('wName').placeholder = "Ism va Familiyangiz";
+                document.getElementById('wText').placeholder = "Samimiy tilagingiz...";
+                document.getElementById('wishBtn').innerText = "Tilakni yuborish";
+                document.getElementById('footerText').innerText = "Sizni to'yimizda ko'rtsak doim xursand bo'lamiz!";
+            }
+        }
 
+        function sendWish() {
+            const name = document.getElementById('wName').value;
+            if(!name) {
+                alert(currentLang === 'uz' ? "Iltimos ismingizni kirib qoldiring!" : "Пожалуйста, введите ваше имя!");
+                return;
+            }
+            alert(currentLang === 'uz' ? "Tabrigingiz qabul qilindi! Rahmat." : "Ваше поздравление принято! Спасибо.");
+            document.getElementById('wName').value = '';
+            document.getElementById('wText').value = '';
+        }
+
+        const weddingDate = new Date("September 25, 2026 18:00:00").getTime();
         function updateTimer() {
             const now = new Date().getTime();
             const gap = weddingDate - now;
-
             if (gap < 0) return;
-
             const days = Math.floor(gap / (1000 * 60 * 60 * 24));
             const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((gap % (1000 * 60)) / 1000);
-
             document.getElementById("days").innerText = days < 10 ? "0" + days : days;
             document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
             document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
             document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
         }
-
         setInterval(updateTimer, 1000);
     </script>
-
 </body>
 </html>
