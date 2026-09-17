@@ -76,43 +76,55 @@
         }
         .music-btn { width: 38px; border-radius: 50%; padding: 0; font-size: 16px; }
 
-        /* Uchar kaptarlar animatsiyasi */
+        /* Kaptarlar animatsiyasi */
         .doves-container {
             position: relative;
-            height: 50px;
+            height: 40px;
             width: 100%;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             overflow: hidden;
         }
         .dove {
             position: absolute;
-            font-size: 24px;
-            animation: flyDove 6s linear infinite;
+            font-size: 22px;
+            animation: flyDove 7s linear infinite;
         }
-        .dove:nth-child(1) { top: 10px; left: -30px; animation-delay: 0s; }
-        .dove:nth-child(2) { top: 25px; left: -50px; animation-delay: 3s; font-size: 20px; }
+        .dove:nth-child(1) { top: 5px; left: -30px; animation-delay: 0s; }
+        .dove:nth-child(2) { top: 15px; left: -50px; animation-delay: 3.5s; font-size: 18px; }
 
         @keyframes flyDove {
             0% { transform: translateX(-40px) translateY(0) scale(0.8); opacity: 0; }
-            20% { opacity: 1; }
-            50% { transform: translateX(210px) translateY(-10px) scale(1); }
-            80% { opacity: 1; }
+            20% { opacity: 0.9; }
+            50% { transform: translateX(210px) translateY(-8px) scale(1); }
+            80% { opacity: 0.9; }
             100% { transform: translateX(450px) translateY(5px) scale(0.9); opacity: 0; }
         }
 
-        /* Milliy Atlas naqsh chizig'i */
-        .atlas-divider {
-            width: 120px;
-            height: 6px;
-            background: linear-gradient(90deg, #b30000, #d4af37, #004d99, #008000, #b30000);
-            margin: 12px auto;
-            border-radius: 3px;
+        /* Premium Milliy Naqsh (Zardo'zi uslubida) */
+        .lux-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px auto;
+            width: 80%;
+        }
+        .lux-ornament::before, .lux-ornament::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: linear-gradient(90deg, transparent, #c59b27, transparent);
+        }
+        .ornament-icon {
+            color: #b30000;
+            font-size: 14px;
+            letter-spacing: 3px;
         }
 
         /* Content */
         .content { padding: 40px 20px; text-align: center; position: relative; overflow: hidden; }
         h1 { font-family: 'Playfair Display', serif; font-size: 28px; color: #4a040b; margin: 5px 0; }
-        .invitation-text { font-size: 14px; line-height: 1.8; color: #555; margin: 20px 0; background: #fff8eb; padding: 15px; border-radius: 12px; border: 1px dashed #d4af37; }
+        .invitation-text { font-size: 14px; line-height: 1.8; color: #444; margin: 20px 0; background: #fff8eb; padding: 16px; border-radius: 12px; border: 1px solid #e8d5b5; }
 
         /* Rasm */
         .photo-box {
@@ -165,50 +177,44 @@
         .wishes-box input, .wishes-box textarea { width: 100%; padding: 11px; margin: 6px 0; border: 1px solid #ddd; border-radius: 8px; font-family: 'Montserrat'; font-size: 13px; }
         .wishes-btn { background: #d4af37; color: #200104; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 8px; font-size: 13px; }
 
-        .footer { margin: 30px 0 15px 0; font-size: 12px; color: #777; letter-spacing: 1px; font-style: italic; }
+        .footer { margin: 30px 0 15px 0; font-size: 13px; color: #555; letter-spacing: 0.5px; font-weight: 500; }
     </style>
 </head>
 <body>
 
     <div class="phone-frame">
-        <!-- Yuqori boshqaruv paneli -->
         <div class="top-controls">
             <button class="music-btn" id="musicToggle" onclick="toggleMusic()" style="display:none;">🎵</button>
             <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">RU / UZ</button>
         </div>
 
-        <!-- Cover -->
         <div class="cover" id="coverScreen">
             <h2 id="cTitle">TO'YGA TAKLIFNOMA</h2>
-            <div class="atlas-divider"></div>
+            <div class="lux-ornament"><span class="ornament-icon">❖ ❖ ❖</span></div>
             <div class="seal" onclick="openInvitation()" id="openBtn">Ochish</div>
             <p id="cSub">hurmat va ehtirom ila,</p>
             <div class="names-cover">Davronbek & Nodiraxon</div>
         </div>
 
-        <!-- Content -->
         <div class="content" id="mainContent">
-            <!-- Uchib yuruvchi kaptarlar animatsiyasi -->
             <div class="doves-container">
                 <div class="dove">🕊️</div>
                 <div class="dove">🕊️</div>
             </div>
 
-            <div class="atlas-divider"></div>
-            <h1>Davronbek <br><span style="font-family:'Montserrat'; font-size: 16px; font-weight:300; color:#888;" id="andText">va</span><br> Nodiraxon</h1>
-            <div class="atlas-divider"></div>
+            <div class="lux-ornament"><span class="ornament-icon">❖ ❖ ❖</span></div>
+            <h1>Davronbek <br><span style="font-family:'Montserrat'; font-size: 15px; font-weight:400; color:#777;" id="andText">va</span><br> Nodiraxon</h1>
+            <div class="lux-ornament"><span class="ornament-icon">❖ ❖ ❖</span></div>
 
-            <!-- Romantik kelin-kuyov rasmi -->
             <div class="photo-box">
                 <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Nikoh">
             </div>
 
             <div class="invitation-text" id="invText">
-                <b>Aziz va qadrdon insonimiz!</b><br><br>
-                Hayotimizdagi eng baxtli va unutilmas lahzalarni yaqinlarimiz qurshovida nishonlashni istaymiz. Sizni nikoh to'yimizning qadrli mehmoni bo'lishga taklif etamiz!
+                <b>Aziz va qadrdon mehmonimiz!</b><br><br>
+                Hayotimizdagi eng quvonchli va unutilmas kunda sizni aziz boshimiz uzra qadrli mehmon sifatida ko'rishdan behad mamnun bo'lamiz. Nikoh oqshomimizning fayzli mehmoni bo'ling!
             </div>
 
-            <!-- Timer -->
             <div class="timer-box">
                 <div class="time-circle"><span id="days">00</span><label id="lDays">Kun</label></div>
                 <div class="time-circle"><span id="hours">00</span><label id="lHours">Soat</label></div>
@@ -216,7 +222,6 @@
                 <div class="time-circle"><span id="seconds">00</span><label id="lSec">Soniya</label></div>
             </div>
 
-            <!-- Calendar -->
             <div class="calendar-card">
                 <div class="calendar-title" id="calTitle">2026 - Sentyabr</div>
                 <div class="calendar-grid">
@@ -229,7 +234,6 @@
                 </div>
             </div>
 
-            <!-- Program -->
             <div class="program-section">
                 <div class="program-title" id="progTitle">TO'Y TANTANASI DASTURI</div>
                 <div class="program-item">
@@ -246,14 +250,12 @@
                 </div>
             </div>
 
-            <!-- Venue -->
             <div class="venue-card">
                 <h3 id="venueTitle">TO'YXONA MANZILI</h3>
                 <p id="venueDesc">📍 "Osiyo Grand" tantanalar saroyi, Qarshi shahri</p>
                 <a href="https://yandex.uz/maps" target="_blank" class="map-btn" id="mapBtn">Yandex Xaritasi orqali ochish</a>
             </div>
 
-            <!-- Wishes -->
             <div class="wishes-box">
                 <h3 style="font-family:'Playfair Display'; color:#4a040b; margin-bottom:6px; font-size:16px;" id="wishTitle">Samimiy Tilaklar</h3>
                 <p style="font-size:12px; color:#666; margin-bottom:12px;" id="wishSub">Yoshlarga o'z dildan chiqqan tabriklaringizni yozib qoldiring:</p>
@@ -263,7 +265,7 @@
             </div>
 
             <div class="footer" id="footerText">
-                Sizni to'yimizda ko'rtsak doim xursand bo'lamiz!
+                Sizning tashrifingiz biz uchun ulkan baxt!
             </div>
         </div>
     </div>
@@ -307,14 +309,14 @@
                 document.getElementById('openBtn').innerText = "Открыть";
                 document.getElementById('cSub').innerText = "с уважением и почтением,";
                 document.getElementById('andText').innerText = "и";
-                document.getElementById('invText').innerHTML = "<b>Дорогие и уважаемые гости!</b><br><br>Мы хотим разделить самые счастливые моменты нашей жизни в кругу близких. Приглашаем вас разделить с нами радость нашего свадебного вечера!";
+                document.getElementById('invText').innerHTML = "<b>Дорогие и уважаемые гости!</b><br><br>В самый радостный и незабываемый день нашей жизни мы будем счастливы видеть вас среди наших почётных гостей. Разделите с нами радость этого торжественного вечера!";
                 document.getElementById('lDays').innerText = "Дней";
                 document.getElementById('lHours').innerText = "Часов";
                 document.getElementById('lMin').innerText = "Минут";
                 document.getElementById('lSec').innerText = "Секунд";
                 document.getElementById('calTitle').innerText = "2026 - Сентябрь";
                 document.getElementById('progTitle').innerText = "ПРОГРАММА СВАДЬБЫ";
-                document.getElementById('p1').innerText = "Встреча гостей под звуки праздничного вечера";
+                document.getElementById('p1').innerText = "Встреча гостей под звуки карнай-сурнай";
                 document.getElementById('p2').innerText = "Начало торжественного свадебного вечера";
                 document.getElementById('p3').innerText = "Праздничный банкет и шоу-программа";
                 document.getElementById('venueTitle').innerText = "АДРЕС РЕСТОРАНА";
@@ -325,7 +327,7 @@
                 document.getElementById('wName').placeholder = "Ваше Имя и Фамилия";
                 document.getElementById('wText').placeholder = "Ваше искреннее пожелание...";
                 document.getElementById('wishBtn').innerText = "Отправить пожелание";
-                document.getElementById('footerText').innerText = "Будем рады видеть вас на нашей свадьбе!";
+                document.getElementById('footerText').innerText = "Ваш визит — большая радость для нас!";
             } else {
                 currentLang = 'uz';
                 document.getElementById('langToggle').innerText = 'RU';
@@ -333,14 +335,14 @@
                 document.getElementById('openBtn').innerText = "Ochish";
                 document.getElementById('cSub').innerText = "hurmat va ehtirom ila,";
                 document.getElementById('andText').innerText = "va";
-                document.getElementById('invText').innerHTML = "<b>Aziz va qadrdon insonimiz!</b><br><br>Hayotimizdagi eng baxtli va unutilmas lahzalarni yaqinlarimiz qurshovida nishonlashni istaymiz. Sizni nikoh to'yimizning qadrli mehmoni bo'lishga taklif etamiz!";
+                document.getElementById('invText').innerHTML = "<b>Aziz va qadrdon mehmonimiz!</b><br><br>Hayotimizdagi eng quvonchli va unutilmas kunda sizni aziz boshimiz uzra qadrli mehmon sifatida ko'rishdan behad mamnun bo'lamiz. Nikoh oqshomimizning fayzli mehmoni bo'ling!";
                 document.getElementById('lDays').innerText = "Kun";
                 document.getElementById('lHours').innerText = "Soat";
                 document.getElementById('lMin').innerText = "Daqiqa";
                 document.getElementById('lSec').innerText = "Soniya";
                 document.getElementById('calTitle').innerText = "2026 - Sentyabr";
                 document.getElementById('progTitle').innerText = "TO'Y TANTANASI DASTURI";
-                document.getElementById('p1').innerText = "Mehmonlarni bayramona kayfiyatda kutib olish";
+                document.getElementById('p1').innerText = "Mehmonlarni karnay-surnay sadolari ostida kutib olish";
                 document.getElementById('p2').innerText = "Tantanali nikoh oqshomi boshlanishi";
                 document.getElementById('p3').innerText = "Bayramona dasturxon va shou-dastur";
                 document.getElementById('venueTitle').innerText = "TO'YXONA MANZILI";
@@ -351,14 +353,14 @@
                 document.getElementById('wName').placeholder = "Ism va Familiyangiz";
                 document.getElementById('wText').placeholder = "Samimiy tilagingiz...";
                 document.getElementById('wishBtn').innerText = "Tilakni yuborish";
-                document.getElementById('footerText').innerText = "Sizni to'yimizda ko'rtsak doim xursand bo'lamiz!";
+                document.getElementById('footerText').innerText = "Sizning tashrifingiz biz uchun ulkan baxt!";
             }
         }
 
         function sendWish() {
             const name = document.getElementById('wName').value;
             if(!name) {
-                alert(currentLang === 'uz' ? "Iltimos ismingizni kirib qoldiring!" : "Пожалуйста, введите ваше имя!");
+                alert(currentLang === 'uz' ? "Iltimos ismingizni kiriting!" : "Пожалуйста, введите ваше имя!");
                 return;
             }
             alert(currentLang === 'uz' ? "Tabrigingiz qabul qilindi! Rahmat." : "Ваше поздравление принято! Спасибо.");
