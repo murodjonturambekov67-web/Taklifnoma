@@ -3,59 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To'yga Taklifnoma</title>
+    <title>Murod & Kelin — To'yga Taklifnoma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-            font-family: 'Arial', sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #0f1016;
+            color: #f5f5f5;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #161821 0%, #0f1016 100%);
+            padding: 40px 20px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: #333;
         }
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
         }
-        h1 {
+        .tag {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
             color: #d4af37;
-            margin-bottom: 10px;
-            font-size: 28px;
+            margin-bottom: 15px;
         }
-        h2 {
-            font-size: 22px;
+        .names {
+            font-size: 38px;
+            color: #ffffff;
             margin: 20px 0;
-            color: #444;
+            font-weight: 600;
         }
-        p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 16px;
+        .names span {
+            color: #d4af37;
+            font-style: italic;
+        }
+        .text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+        .date-box {
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 15px 0;
+            width: 100%;
+            margin-bottom: 30px;
         }
         .date {
-            margin-top: 30px;
-            font-weight: bold;
-            color: #2c3e50;
-            font-size: 18px;
+            font-size: 20px;
+            color: #d4af37;
+            font-weight: 500;
+        }
+        .location {
+            font-size: 16px;
+            color: #dddddd;
+            margin-bottom: 35px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #d4af37;
+            color: #0f1016;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        .btn:hover {
+            background: #e6c55c;
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>Aziz mehmon!</h1>
-        <p>Sizni turmush qurish oqshomimizga bag'ishlangan tantanali to'y stolimizga lutfan taklif etamiz.</p>
-        <h2>Murod & Kelin</h2>
-        <div class="date">📅 2026-yil 25-sentyabr</div>
-        <p style="margin-top: 15px; font-size: 14px;">📍 "Tamosha" to'yxonasi, Toshkent</p>
+    <div class="container">
+        <div class="tag">To'yga Taklifnoma</div>
+        <p class="text">Aziz qadrdonlarimiz! Sizni farzandlarimiz to'yi munosabati bilan yozilgan dasturxonimizning qadrli mehmoni bo'lishga taklif etamiz.</p>
+        
+        <div class="names">Murod <span>&</span> Kelin</div>
+        
+        <div class="date-box">
+            <div class="date">25 Sentyabr, 2026 yil</div>
+        </div>
+
+        <div class="location">
+            📍 <b>"Tamosha"</b> to'yxonasi, Toshkent shahri
+        </div>
+
+        <a href="https://maps.app.goo.gl" target="_blank" class="btn">Xaritada ko'rish</a>
     </div>
 
 </body>
